@@ -2,3 +2,9 @@ language: java
 jdk:
 - openjdk8
 script: mvn clean verify
+
+deploy:
+  provider: heroku
+  api_key:
+    secure: 1a6e65c6-e3ef-4f5e-8008-33aa81f1105f
+  app: benzo-cucumber
