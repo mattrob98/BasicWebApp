@@ -56,17 +56,35 @@ public class QueryProcessor {
 
 
         if (query.toLowerCase().contains("what is")) {
-            Matcher m = p.matcher(query);
+            if (query.toLowerCase().contains("plus")){
 
-            // if an occurrence if a pattern was found in a given string...
-            if (m.find()) {
-                int first = Integer.valueOf(m.group());
+                Matcher m = p.matcher(query);
+
+                // if an occurrence if a pattern was found in a given string...
                 if (m.find()) {
-                    int second = Integer.valueOf(m.group());
-                    return String.valueOf(first + second);
+                    int first = Integer.valueOf(m.group());
+                    if (m.find()) {
+                        int second = Integer.valueOf(m.group());
+                        return String.valueOf(first + second);
 
+                    }
                 }
             }
+            else if (query.toLowerCase().contains("multipl")){
+
+                Matcher m = p.matcher(query);
+
+                // if an occurrence if a pattern was found in a given string...
+                if (m.find()) {
+                    int first = Integer.valueOf(m.group());
+                    if (m.find()) {
+                        int second = Integer.valueOf(m.group());
+                        return String.valueOf(first * second);
+
+                    }
+                }
+            }
+
         }
         return "";
     }
