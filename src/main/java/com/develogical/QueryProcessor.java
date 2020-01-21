@@ -1,5 +1,8 @@
 package com.develogical;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class QueryProcessor {
 
     public String process(String query) {
@@ -33,6 +36,27 @@ public class QueryProcessor {
         } else if (query.toLowerCase().contains("team name")) {
             return "Benedrome Cucaracha";
         }
-        return ""
+        return process3(query);
+    }
+
+
+    public String process3(String query) {
+        final Pattern p = Pattern.compile("\\d+");
+
+
+        if (query.toLowerCase().contains("what is")) {
+            Matcher m = p.matcher(query);
+
+            // if an occurrence if a pattern was found in a given string...
+            if (m.find()) {
+                int first = Integer.valueOf(m.group());
+                if (m.find()) {
+                    int second = Integer.valueOf(m.group());
+                    return String.valueOf(first + second);
+
+                }
+            }
+        }
+        return "";
     }
 }
