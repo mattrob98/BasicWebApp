@@ -25,6 +25,8 @@ public class QueryProcessor {
             return "Paris";
         } else if (query.toLowerCase().contains("banana")) {
             return "Yellow";
+        } else if (query.toLowerCase().contains("dr. no")) {
+            return "Sean Connery";
         }
         return process2(query);
     }
