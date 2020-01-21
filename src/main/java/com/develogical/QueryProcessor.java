@@ -1,5 +1,8 @@
 package com.develogical;
 
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -33,8 +36,14 @@ public class QueryProcessor {
             return "is a drug, whoops";
         } else if (query.toLowerCase().contains("test1")) {
             return "This is a test";
-        } else if (query.toLowerCase().contains("team name")) {
-            return "Benedrome Cucaracha";
+        } else if (query.toLowerCase().contains("largest")) {
+            Pattern p = Pattern.compile("-?\\d+");
+            Matcher m = p.matcher(query.toLowerCase());
+            List<Integer> numbers = new LinkedList<>();
+            while (m.find()) {
+                numbers.add(Integer.parseInt(m.group()));
+            }
+            return Integer.toString(Collections.max(numbers));
         }
         return process3(query);
     }
