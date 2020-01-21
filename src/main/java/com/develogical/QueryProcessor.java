@@ -21,6 +21,8 @@ public class QueryProcessor {
             return "This is a test";
         } else if (query.toLowerCase().contains("team name")) {
             return "Benedrome Cucaracha";
+        } else if (query.toLowerCase().contains("eiffel")) {
+            return "Paris";
         }
         return process2(query);
     }
