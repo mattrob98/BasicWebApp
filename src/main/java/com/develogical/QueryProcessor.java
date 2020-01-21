@@ -82,6 +82,20 @@ public class QueryProcessor {
                     }
                 }
             }
+            else if (query.toLowerCase().contains("minus")){
+
+                Matcher m = p.matcher(query);
+
+                // if an occurrence if a pattern was found in a given string...
+                if (m.find()) {
+                    int first = Integer.valueOf(m.group());
+                    if (m.find()) {
+                        int second = Integer.valueOf(m.group());
+                        return String.valueOf(first - second);
+
+                    }
+                }
+            }
 
         }
         return "";
