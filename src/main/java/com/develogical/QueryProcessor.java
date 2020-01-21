@@ -9,6 +9,8 @@ import java.util.regex.Pattern;
 public class QueryProcessor {
 
     public String process(String query) {
+        Pattern p = Pattern.compile("-?\\d+");
+
         if (query.toLowerCase().contains("shakespeare")) {
             return "William Shakespeare (26 April 1564 - 23 April 1616) was an " +
                     "English poet, playwright, and actor, widely regarded as the greatest " +
@@ -43,7 +45,7 @@ public class QueryProcessor {
                     n1 = n2;
                     n2 = ans;
                 }
-                return Integer.toString(ans);
+                return Long.toString(ans);
             }
         }
         return process2(query);
@@ -68,6 +70,20 @@ public class QueryProcessor {
                 numbers.add(Integer.parseInt(m.group()));
             }
             return Integer.toString(Collections.max(numbers));
+        } else if (query.toLowerCase().contains("square")) {
+            Pattern p = Pattern.compile("-?\\d+");
+            Matcher m = p.matcher(query.toLowerCase());
+            List<Integer> numbers = new LinkedList<>();
+            while (m.find()) {
+                numbers.add(Integer.parseInt(m.group()));
+            }
+
+            for (Integer num : numbers) {
+                if ((Math.sqrt(num)) % 1 == 0 && (Math.cbrt(num)) % 1 == 0) {
+                    return Integer.toString(num);
+                }
+            }
+
         }
         return process3(query);
     }
