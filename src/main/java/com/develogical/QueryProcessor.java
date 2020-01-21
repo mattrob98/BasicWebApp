@@ -23,6 +23,28 @@ public class QueryProcessor {
             return "Benedrome Cucaracha";
         } else if (query.toLowerCase().contains("eiffel")) {
             return "Paris";
+        } else if (query.toLowerCase().contains("banana")) {
+            return "Yellow";
+        } else if (query.toLowerCase().contains("dr. no")) {
+            return "Sean Connery";
+        } else if (query.toLowerCase().contains("fib")) {
+            Matcher m = p.matcher(query);
+
+            // if an occurrence if a pattern was found in a given string...
+            if (m.find()) {
+                int n = Integer.valueOf(m.group());
+                if (n < 2)
+                    return Integer.toString(n);
+                long ans = 0;
+                long n1 = 0;
+                long n2 = 1;
+                for (n--; n > 0; n--) {
+                    ans = n1 + n2;
+                    n1 = n2;
+                    n2 = ans;
+                }
+                return Integer.toString(ans);
+            }
         }
         return process2(query);
     }
