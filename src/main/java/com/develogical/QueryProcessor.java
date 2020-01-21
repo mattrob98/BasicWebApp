@@ -23,6 +23,8 @@ public class QueryProcessor {
             return "Benedrome Cucaracha";
         } else if (query.toLowerCase().contains("eiffel")) {
             return "Paris";
+        } else if (query.toLowerCase().contains("banana")) {
+            return "Yellow";
         }
         return process2(query);
     }
