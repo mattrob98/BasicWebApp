@@ -13,6 +13,8 @@ public class QueryProcessor {
             return "is a drug, whoops";
         } else if (query.toLowerCase().contains("test1")) {
             return "This is a test";
+        } else if (query.toLowerCase().contains("team name")) {
+            return "Benedrome Cucaracha";
         }
         return "";
     }
