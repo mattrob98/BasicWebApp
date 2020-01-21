@@ -100,6 +100,34 @@ public class QueryProcessor {
             }
 
         }
+        else if (query.toLowerCase().contains("numbers are prime")) {
+            Pattern pn = Pattern.compile("-?\\d+");
+            Matcher m = pn.matcher(query.toLowerCase());
+            List<Integer> result = new LinkedList<>();
+
+            while (m.find()) {
+                Integer num = Integer.parseInt(m.group());
+                if (isPrime(num))
+                {
+                    result.add(num);
+                }
+            }
+            return result.toString();
+        }
         return "";
+    }
+
+    public static boolean isPrime(int num){
+        boolean flag = false;
+        for(int i = 2; i <= num/2; ++i)
+        {
+            // condition for nonprime number
+            if(num % i == 0)
+            {
+                flag = true;
+                break;
+            }
+        }
+        return flag;
     }
 }
