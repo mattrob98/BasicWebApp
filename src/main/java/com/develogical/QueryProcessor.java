@@ -1,5 +1,6 @@
 package com.develogical;
 
+import java.text.CollationElementIterator;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
@@ -97,30 +98,36 @@ public class QueryProcessor {
             if (query.toLowerCase().contains("plus")){
 
                 Matcher m = p.matcher(query);
-
+                List<Integer> numbers = new LinkedList();
                 // if an occurrence if a pattern was found in a given string...
-                if (m.find()) {
-                    int first = Integer.valueOf(m.group());
-                    if (m.find()) {
-                        int second = Integer.valueOf(m.group());
-                        return String.valueOf(first + second);
+                while (m.find()) {
+                    numbers.add(Integer.parseInt(m.group()));
 
                     }
+                int result = 0;
+                    for (Integer num:numbers)
+                {
+                    result += num;
                 }
+                return String.valueOf(result);
             }
             else if (query.toLowerCase().contains("multipl")){
 
                 Matcher m = p.matcher(query);
 
                 // if an occurrence if a pattern was found in a given string...
-                if (m.find()) {
-                    int first = Integer.valueOf(m.group());
-                    if (m.find()) {
-                        int second = Integer.valueOf(m.group());
-                        return String.valueOf(first * second);
+                List<Integer> numbers = new LinkedList();
+                // if an occurrence if a pattern was found in a given string...
+                while (m.find()) {
+                    numbers.add(Integer.parseInt(m.group()));
 
-                    }
                 }
+                int result = 0;
+                for (Integer num:numbers)
+                {
+                    result *= num;
+                }
+                return String.valueOf(result);
             }
             else if (query.toLowerCase().contains("minus")){
 
