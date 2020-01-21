@@ -34,8 +34,8 @@ public class QueryProcessor {
             return "William Shakespeare (26 April 1564 - 23 April 1616) was an " +
                     "English poet, playwright, and actor, widely regarded as the greatest " +
                     "writer in the English language and the world's pre-eminent dramatist.";
-        } else if (query.toLowerCase().contains("cucumber")) {
-            return "benzo";
+        } else if (query.toLowerCase().contains("theresa may")) {
+            return "2016";
         } else if (query.toLowerCase().contains("benzo")) {
             return "is a drug, whoops";
         } else if (query.toLowerCase().contains("test1")) {
@@ -82,6 +82,20 @@ public class QueryProcessor {
                     if (m.find()) {
                         int second = Integer.valueOf(m.group());
                         return String.valueOf(first * second);
+
+                    }
+                }
+            }
+            else if (query.toLowerCase().contains("minus")){
+
+                Matcher m = p.matcher(query);
+
+                // if an occurrence if a pattern was found in a given string...
+                if (m.find()) {
+                    int first = Integer.valueOf(m.group());
+                    if (m.find()) {
+                        int second = Integer.valueOf(m.group());
+                        return String.valueOf(first - second);
 
                     }
                 }
